@@ -32,8 +32,8 @@ def read_images_from_dir(directory='./sample/processed'):
             img = io.imread('{}/{}'.format(directory, file))
 
             name, ext = file.split('.')
-            label = data[data.image == name].values[0][
-                1]  # FIXME Better way to do this?
+            # FIXME Better way to do this?
+            label = data[data.image == name].values[0][1]
 
             images.append((img, label))
 

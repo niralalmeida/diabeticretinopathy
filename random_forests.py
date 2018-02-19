@@ -1,23 +1,24 @@
 """
- Naive Bayes Classifier for Diabetic Retinopathy Detection
+ Random Forests Classifier for Diabetic Retinopathy Detection
 
- Date: 18th February, 2018
+ Date: 19th February, 2018
 """
 
-from load_sample_dataset import load_sample_dataset
 
-from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
+
+from load_sample_dataset import load_sample_dataset
 
 
 def main():
     train_x, test_x, train_y, test_y = load_sample_dataset()
 
-    gnb = GaussianNB()
+    rfc = RandomForestClassifier(max_depth=2, random_state=0)
 
-    gnb.fit(train_x, train_y)
+    rfc.fit(train_x, train_y)
 
-    predictions = gnb.predict(test_x)
+    predictions = rfc.predict(test_x)
 
     print('Accuracy score: {}'.format(metrics.accuracy_score(test_y, predictions)))
     print('Classification Report:\n{}'.format(metrics.classification_report(test_y, predictions)))
