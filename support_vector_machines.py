@@ -4,15 +4,14 @@
  Date: 19th February, 2018
 """
 
-
-from sklearn.svm import LinearSVC
 from sklearn import metrics
+from sklearn.svm import LinearSVC
 
-from load_sample_dataset import load_sample_dataset
+from load_dataset import load_dataset
 
 
 def main():
-    train_x, test_x, train_y, test_y = load_sample_dataset()
+    train_x, test_x, train_y, test_y = load_dataset(5000)
 
     lsvc = LinearSVC(random_state=0)
 
@@ -20,9 +19,12 @@ def main():
 
     predictions = lsvc.predict(test_x)
 
-    print('Accuracy score: {}'.format(metrics.accuracy_score(test_y, predictions)))
-    print('Classification Report:\n{}'.format(metrics.classification_report(test_y, predictions)))
-    print('Confusion Matrix:\n{}'.format(metrics.confusion_matrix(test_y, predictions)))
+    print('Accuracy score: {}'.format(
+        metrics.accuracy_score(test_y, predictions)))
+    print('Classification Report:\n{}'.format(
+        metrics.classification_report(test_y, predictions)))
+    print('Confusion Matrix:\n{}'.format(
+        metrics.confusion_matrix(test_y, predictions)))
 
 
 if __name__ == '__main__':

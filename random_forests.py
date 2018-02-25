@@ -4,25 +4,27 @@
  Date: 19th February, 2018
 """
 
-
-from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
+from sklearn.ensemble import RandomForestClassifier
 
-from load_sample_dataset import load_sample_dataset
+from load_dataset import load_dataset
 
 
 def main():
-    train_x, test_x, train_y, test_y = load_sample_dataset()
+    train_x, test_x, train_y, test_y = load_dataset(5000)
 
-    rfc = RandomForestClassifier(max_depth=2, random_state=0)
+    rfc = RandomForestClassifier(random_state=0)
 
     rfc.fit(train_x, train_y)
 
     predictions = rfc.predict(test_x)
 
-    print('Accuracy score: {}'.format(metrics.accuracy_score(test_y, predictions)))
-    print('Classification Report:\n{}'.format(metrics.classification_report(test_y, predictions)))
-    print('Confusion Matrix:\n{}'.format(metrics.confusion_matrix(test_y, predictions)))
+    print('Accuracy score: {}'.format(
+        metrics.accuracy_score(test_y, predictions)))
+    print('Classification Report:\n{}'.format(
+        metrics.classification_report(test_y, predictions)))
+    print('Confusion Matrix:\n{}'.format(
+        metrics.confusion_matrix(test_y, predictions)))
 
 
 if __name__ == '__main__':
