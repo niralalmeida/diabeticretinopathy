@@ -11,7 +11,8 @@ from load_dataset import load_dataset
 
 
 def main():
-    train_x, test_x, train_y, test_y = load_dataset(5000)
+
+    train_x, test_x, train_y, test_y = load_dataset(1000)
 
     rfc = RandomForestClassifier(random_state=0)
 

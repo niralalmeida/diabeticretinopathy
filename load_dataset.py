@@ -72,19 +72,19 @@ def load_dataset(size, test_split=20):
 
     # Extract training data file names and labels
     train_data_0 = data_0.head(size_0)
-    data_0.drop(train_data_0.index.values, inplace=True)
+    data_0.drop(train_data_0.index.values)
 
     train_data_1 = data_1.head(size_1)
-    data_1.drop(train_data_1.index.values, inplace=True)
+    data_1.drop(train_data_1.index.values)
 
     train_data_2 = data_2.head(size_2)
-    data_2.drop(train_data_2.index.values, inplace=True)
+    data_2.drop(train_data_2.index.values)
 
     train_data_3 = data_3.head(size_3)
-    data_3.drop(train_data_3.index.values, inplace=True)
+    data_3.drop(train_data_3.index.values)
 
     train_data_4 = data_4.head(size_4)
-    data_4.drop(train_data_4.index.values, inplace=True)
+    data_4.drop(train_data_4.index.values)
 
     # Read images and extract features
     train_features = []

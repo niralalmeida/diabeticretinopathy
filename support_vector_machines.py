@@ -11,9 +11,10 @@ from load_dataset import load_dataset
 
 
 def main():
-    train_x, test_x, train_y, test_y = load_dataset(5000)
 
-    lsvc = LinearSVC(random_state=0)
+    train_x, test_x, train_y, test_y = load_dataset(1000)
+
+    lsvc = LinearSVC(random_state=0, dual=False)
 
     lsvc.fit(train_x, train_y)
 
