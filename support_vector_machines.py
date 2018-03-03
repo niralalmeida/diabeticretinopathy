@@ -1,10 +1,11 @@
 """
- Random Forests Classifier for Diabetic Retinopathy Detection
+ Support Vector Machine Classifier for Diabetic Retinopathy Detection
 
  Date: 19th February, 2018
 """
 
 from sklearn import metrics
+from sklearn.decomposition import PCA
 from sklearn.svm import LinearSVC
 
 from load_dataset import load_dataset
@@ -12,7 +13,13 @@ from load_dataset import load_dataset
 
 def main():
 
-    train_x, test_x, train_y, test_y = load_dataset(1000)
+    train_x, test_x, train_y, test_y = load_dataset(5000)
+
+    pca = PCA()
+
+    pca.fit(train_x)
+    train_x = pca.transform(train_x)
+    test_x = pca.transform(test_x)
 
     lsvc = LinearSVC(random_state=0, dual=False)
 

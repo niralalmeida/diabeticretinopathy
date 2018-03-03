@@ -6,13 +6,20 @@
 
 from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.decomposition import PCA
 
 from load_dataset import load_dataset
 
 
 def main():
 
-    train_x, test_x, train_y, test_y = load_dataset(1000)
+    train_x, test_x, train_y, test_y = load_dataset(500)
+
+    pca = PCA()
+
+    pca.fit(train_x)
+    train_x = pca.transform(train_x)
+    test_x = pca.transform(test_x)
 
     rfc = RandomForestClassifier(random_state=0)
 

@@ -4,27 +4,33 @@
  Date: 18th February, 2018
 """
 
-from sklearn import metrics
+# from sklearn.model_selection import cross_val_score
 from sklearn.naive_bayes import GaussianNB
+from sklearn.decomposition import PCA
+from sklearn import metrics
 
 from load_dataset import load_dataset
 
 
 def main():
-    train_x, test_x, train_y, test_y = load_dataset(1000)
+    train_x, test_x, train_y, test_y = load_dataset(5000)
+
+    pca = PCA()
+
+    pca.fit(train_x)
+    train_x = pca.transform(train_x)
+    test_x = pca.transform(test_x)
 
     gnb = GaussianNB()
 
     gnb.fit(train_x, train_y)
 
-    predictions = gnb.predict(test_x)
+    predict = gnb.predict(test_x)
 
-    print('Accuracy score: {}'.format(
-        metrics.accuracy_score(test_y, predictions)))
-    print('Classification Report:\n{}'.format(
-        metrics.classification_report(test_y, predictions)))
+    print('Accuracy Score: {}'.format(metrics.accuracy_score(test_y, predict)))
     print('Confusion Matrix:\n{}'.format(
-        metrics.confusion_matrix(test_y, predictions)))
+        metrics.confusion_matrix(test_y, predict)))
+    print('Report:\n{}'.format(metrics.classification_report(test_y, predict)))
 
 
 if __name__ == '__main__':
