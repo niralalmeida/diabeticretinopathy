@@ -5,7 +5,7 @@
 """
 
 from sklearn import metrics
-from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.svm import LinearSVC
 
 from load_dataset import load_dataset
@@ -13,13 +13,13 @@ from load_dataset import load_dataset
 
 def main():
 
-    train_x, test_x, train_y, test_y = load_dataset(5000)
+    train_x, test_x, train_y, test_y = load_dataset(500)
 
-    pca = PCA()
+    lda = LinearDiscriminantAnalysis()
 
-    pca.fit(train_x)
-    train_x = pca.transform(train_x)
-    test_x = pca.transform(test_x)
+    lda.fit(train_x, train_y)
+    train_x = lda.transform(train_x)
+    test_x = lda.transform(test_x)
 
     lsvc = LinearSVC(random_state=0, dual=False)
 

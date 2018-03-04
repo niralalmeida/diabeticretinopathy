@@ -4,22 +4,21 @@
  Date: 18th February, 2018
 """
 
-# from sklearn.model_selection import cross_val_score
 from sklearn.naive_bayes import GaussianNB
-from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn import metrics
 
 from load_dataset import load_dataset
 
 
 def main():
-    train_x, test_x, train_y, test_y = load_dataset(5000)
+    train_x, test_x, train_y, test_y = load_dataset(500)
 
-    pca = PCA()
+    lda = LinearDiscriminantAnalysis()
 
-    pca.fit(train_x)
-    train_x = pca.transform(train_x)
-    test_x = pca.transform(test_x)
+    lda.fit(train_x, train_y)
+    train_x = lda.transform(train_x)
+    test_x = lda.transform(test_x)
 
     gnb = GaussianNB()
 
@@ -30,7 +29,8 @@ def main():
     print('Accuracy Score: {}'.format(metrics.accuracy_score(test_y, predict)))
     print('Confusion Matrix:\n{}'.format(
         metrics.confusion_matrix(test_y, predict)))
-    print('Report:\n{}'.format(metrics.classification_report(test_y, predict)))
+    print('Classification Report:\n{}'.format(
+        metrics.classification_report(test_y, predict)))
 
 
 if __name__ == '__main__':
