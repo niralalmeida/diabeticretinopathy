@@ -1,12 +1,15 @@
 """
  Naive Bayes Classifier for Diabetic Retinopathy Detection
 
+ Results after 5-fold Cross Validation
+ [0.79268293 0.80246914 0.8125 0.88607595 0.84615385]
+
  Date: 18th February, 2018
 """
 
-from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn import metrics
+from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import cross_val_score
 
 from load_dataset import load_dataset
 
@@ -20,17 +23,12 @@ def main():
     train_x = lda.transform(train_x)
     test_x = lda.transform(test_x)
 
-    gnb = GaussianNB()
+    scores = cross_val_score(
+        GaussianNB(), train_x, train_y, scoring='accuracy', cv=5)
 
-    gnb.fit(train_x, train_y)
+    print(scores)
 
-    predict = gnb.predict(test_x)
-
-    print('Accuracy Score: {}'.format(metrics.accuracy_score(test_y, predict)))
-    print('Confusion Matrix:\n{}'.format(
-        metrics.confusion_matrix(test_y, predict)))
-    print('Classification Report:\n{}'.format(
-        metrics.classification_report(test_y, predict)))
+    print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
 
 
 if __name__ == '__main__':
