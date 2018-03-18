@@ -6,6 +6,7 @@
 
 from sklearn import metrics
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.model_selection import GridSearchCV
 from sklearn.svm import LinearSVC
 
 from load_dataset import load_dataset
@@ -21,18 +22,36 @@ def main():
     train_x = lda.transform(train_x)
     test_x = lda.transform(test_x)
 
-    lsvc = LinearSVC(random_state=0, dual=False)
+    parameters = [
+        {
+            'C': [1.0, 2.0, 5.0],
+            'dual': [True],
+            'penalty': ['l2'],
+            'loss': ['hinge', 'squared_hinge']
+        },
+        {
+            'C': [1.0, 2.0, 5.0],
+            'dual': [False],
+            'penalty': ['l1'],
+            'loss': ['squared_hinge']
+        }
+    ]
 
-    lsvc.fit(train_x, train_y)
+    gd = GridSearchCV(LinearSVC(), parameters, scoring="accuracy")
 
-    predictions = lsvc.predict(test_x)
+    gd.fit(train_x, train_y)
 
-    print('Accuracy score: {}'.format(
-        metrics.accuracy_score(test_y, predictions)))
-    print('Classification Report:\n{}'.format(
-        metrics.classification_report(test_y, predictions)))
-    print('Confusion Matrix:\n{}'.format(
-        metrics.confusion_matrix(test_y, predictions)))
+    print('Best Score: {}'.format(gd.best_score_))
+
+    print('Best Model:\n{}'.format(gd.best_estimator_))
+
+    lsvc = gd.best_estimator_
+
+    pred = lsvc.predict(test_x)
+
+    print('On Test Data...')
+
+    print('Accuracy: {}'.format(metrics.accuracy_score(test_y, pred)))
 
 
 if __name__ == '__main__':

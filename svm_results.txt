@@ -1,0 +1,8 @@
+Best Score: 0.8125
+Best Model:
+LinearSVC(C=5.0, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l1', random_state=None, tol=0.0001,
+     verbose=0)
+On Test Data...
+Accuracy: 0.82
