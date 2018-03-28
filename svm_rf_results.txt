@@ -1,0 +1,48 @@
+Random Forest Classifier - 10000 images - 20% test
+
+Best Score: 1.0
+Best Model:
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='log2', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+On Test Data...
+Accuracy: 1.0
+
+Random Forest Classifier - 500 images - 20% test
+
+Best Score: 0.815
+Best Model:
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=10, max_features='log2', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+On Test Data...
+Accuracy: 0.99
+
+Support Vector Machines - 10000 images - 20% test
+
+Best Score: 1.0
+Best Model:
+LinearSVC(C=1.0, class_weight=None, dual=True, fit_intercept=True,
+     intercept_scaling=1, loss='hinge', max_iter=1000, multi_class='ovr',
+     penalty='l2', random_state=None, tol=0.0001, verbose=0)
+On Test Data...
+Accuracy: 1.0
+
+Support Vector Machines - 500 images - 20% test
+
+Best Score: 0.8125
+Best Model:
+LinearSVC(C=5.0, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l1', random_state=None, tol=0.0001,
+     verbose=0)
+On Test Data...
+Accuracy: 0.82
