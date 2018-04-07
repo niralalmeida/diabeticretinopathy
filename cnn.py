@@ -39,9 +39,15 @@ train_datagen = ImageDataGenerator(horizontal_flip=True)
 test_datagen = ImageDataGenerator()
 
 train_set = train_datagen.flow_from_directory(
-    './sample/train', target_size=(512, 512), batch_size=32)
+    './sample/train',
+    target_size=(512, 512),
+    batch_size=32,
+    class_mode='categorical')
 test_set = test_datagen.flow_from_directory(
-    './sample/test', target_size=(512, 512), batch_size=32)
+    './sample/test',
+    target_size=(512, 512),
+    batch_size=32,
+    class_mode='categorical')
 
 classifier.fit_generator(
     train_set,
