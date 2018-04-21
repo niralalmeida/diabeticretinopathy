@@ -14,7 +14,7 @@ from load_dataset import load_dataset
 
 def main():
 
-    train_x, test_x, train_y, test_y = load_dataset(10000)
+    train_x, test_x, train_y, test_y = load_dataset(500)
 
     lda = LinearDiscriminantAnalysis()
 
