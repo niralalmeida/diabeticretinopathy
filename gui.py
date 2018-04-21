@@ -61,7 +61,7 @@ def pred_nb():
 
     prediction = svc.predict(fd)
 
-    messagebox.showinfo('Naive Bayes Prediction', prediction)
+    messagebox.showinfo('Naive Bayes Prediction', 'Predicted: {}'.format(prediction))
 
 
 def pred_rfc():
@@ -72,7 +72,7 @@ def pred_rfc():
 
     prediction = rfc.predict(fd)
 
-    messagebox.showinfo('Random Forests Prediction', prediction)
+    messagebox.showinfo('Random Forests Prediction', 'Predicted: {}'.format(prediction))
 
 
 def pred_svm():
@@ -83,7 +83,7 @@ def pred_svm():
 
     prediction = svc.predict(fd)
 
-    messagebox.showinfo('SVM Prediction', prediction)
+    messagebox.showinfo('SVM Prediction', 'Predicted: {}'.format(prediction))
 
 
 gui = tkinter.Tk()
