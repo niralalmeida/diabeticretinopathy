@@ -61,7 +61,8 @@ def pred_nb():
 
     prediction = svc.predict(fd)
 
-    messagebox.showinfo('Naive Bayes Prediction', 'Predicted: {}'.format(prediction))
+    messagebox.showinfo('Naive Bayes Prediction',
+                        'Predicted: {}'.format(prediction))
 
 
 def pred_rfc():
@@ -72,7 +73,8 @@ def pred_rfc():
 
     prediction = rfc.predict(fd)
 
-    messagebox.showinfo('Random Forests Prediction', 'Predicted: {}'.format(prediction))
+    messagebox.showinfo('Random Forests Prediction',
+                        'Predicted: {}'.format(prediction))
 
 
 def pred_svm():

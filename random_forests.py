@@ -18,11 +18,11 @@ def main():
 
     train_x, test_x, train_y, test_y = load_dataset(500)
 
-    # lda = LinearDiscriminantAnalysis()
+    lda = LinearDiscriminantAnalysis()
 
-    # lda.fit(train_x, train_y)
-    # train_x = lda.transform(train_x)
-    # test_x = lda.transform(test_x)
+    lda.fit(train_x, train_y)
+    train_x = lda.transform(train_x)
+    test_x = lda.transform(test_x)
 
     parameters = {
         "n_estimators": [10, 50, 100, 500],
