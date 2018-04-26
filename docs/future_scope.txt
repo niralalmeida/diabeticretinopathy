@@ -1,0 +1,23 @@
+1. Try other feature descriptors for feature extraction.
+
+2. Try other dimensionality reduction and feature selection techniques such as PCA
+
+3. Try other Machine Learning algorithms such as AdaBoost etc.
+
+4. Try other cross-validation techniques.
+
+5. Try more exhaustive Grid Search for more hyper-parameters
+
+6. Try Random Search for hyper-parameter tuning
+
+7. Try more architechtures of ConvNets
+
+8. Perform hyper-parameter search for ConvNets
+
+9. Try different optimization algorithms such Adam Optimizer and Stochastic Gradient Descent
+
+10. Try Capsule Nets, which are a proposed replacement of ConvNets
+
+11. Try model ensembeles for all algorithms
+
+12. Try to integrate with the retinoscope itself. 
