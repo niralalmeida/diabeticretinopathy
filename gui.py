@@ -59,7 +59,7 @@ def pred_nb():
 
     fd = load_features(nb_lda)
 
-    prediction = svc.predict(fd)
+    prediction = gnb.predict(fd)
 
     messagebox.showinfo('Naive Bayes Prediction',
                         'Predicted: {}'.format(prediction))
